@@ -1,11 +1,13 @@
 package modelo;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 
 public class Logica {
 
 	PApplet app;
+	PFont mangostana;
 	PImage[] paginas;
 	int numeroPagina;
 	Boton inicioBtn;
@@ -13,10 +15,12 @@ public class Logica {
 	Boton boton3;
 	Boton boton4;
 	PImage[] botones;
+	String [] cuentoData;
 
 	public Logica(PApplet app) {
 
 		this.app = app;
+		this.mangostana = app.createFont("../fonts/Mangostana.otf", 36);
 		this.paginas = new PImage[7];
 		this.paginas[0] = app.loadImage("../img/inicio.jpg");
 		this.paginas[1] = app.loadImage("../img/habiaunavez.jpg");
@@ -33,25 +37,32 @@ public class Logica {
 		this.botones[3] = app.loadImage("../img/boton4ultimo.png");
 		this.inicioBtn = new Boton(960, 551, 148, 60, botones[0], app);
 		this.boton2 = new Boton(960, 551, 148, 60, botones[1], app);
+		this.cuentoData = app.loadStrings("../data/Cuentoprincesa.txt");
 
 	}
 
 	public void pintar() {
 
 		app.image(paginas[numeroPagina], 0, 0, 1200, 700);
+		
 
 		switch (numeroPagina) {
 
 		case 0:
 
 			inicioBtn.pintar();
-
 			break;
 
 		case 1:
 			
 			boton2.pintar();
-
+			app.textSize(36);
+			app.textFont(mangostana);
+			app.fill(0);
+			app.textAlign(app.RIGHT);
+			app.textLeading(25);
+			app.text(cuentoData[0], 614, 246, 505, 233);
+			//System.out.println(cuentoData[0]);
 			break;
 
 		}
