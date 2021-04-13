@@ -1,10 +1,24 @@
 package vista;
 
-public class Main {
+import processing.core.PApplet;
+
+public class Main extends PApplet {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		PApplet.main("vista.Main");
+			
+	}
+	
+	public void settings () {
+		size (1200,700);
+	}
+	
+	public void settup () {
+		
+	}
+	
+	public void draw () {
+		background (0);
 	}
 
 }
