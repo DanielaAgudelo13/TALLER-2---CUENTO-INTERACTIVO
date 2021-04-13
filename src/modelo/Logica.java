@@ -56,7 +56,7 @@ public class Logica {
 		app.textFont(mangostana);
 		app.fill(0);
 		app.textLeading(25);
-		
+
 		// 708, 508, 56, 31
 		switch (numeroPagina) {
 
@@ -71,7 +71,6 @@ public class Logica {
 			app.textAlign(app.RIGHT);
 			app.text(cuentoData[0], 614, 246, 505, 233);
 
-
 			// System.out.println(cuentoData[0]);
 			break;
 
@@ -80,38 +79,37 @@ public class Logica {
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[1], 28, 503, 1150, 160);
 			app.text(cuentoData[2], 28, 580, 1150, 160);
-			//objInteractivo1.pintar();
+			// objInteractivo1.pintar();
 			break;
 
 		case 3:
-			
+
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[3], 28, 503, 1150, 160);
 			break;
-			
+
 		case 4:
-			
+
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[4], 28, 503, 1150, 160);
 			break;
-			
-		case 5: 
-			
+
+		case 5:
+
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[5], 28, 503, 1150, 160);
 			break;
-		
+
 		case 6:
-			
+
 			app.textAlign(app.RIGHT);
 			app.text(cuentoData[6], 576, 318, 518, 158);
 			app.text(cuentoData[7], 576, 420, 518, 158);
 			boton3.pintar();
 			boton4ultimo.pintar();
-			
+
 			break;
-		
-			
+
 		}
 	}
 
@@ -130,7 +128,12 @@ public class Logica {
 		case 2:
 			interactuarObjeto(objInteractivo1);
 			break;
-			
+
+		case 6:
+			guardarCuento(boton3);
+			reiniciarCuento(boton4ultimo);
+			break;
+
 		}
 	}
 
@@ -146,6 +149,20 @@ public class Logica {
 				&& app.mouseY >= objInteractivo.posY && app.mouseY <= objInteractivo.posY + objInteractivo.alto) {
 			System.out.println("ok");
 			parrafo2[8].toUpperCase();
+		}
+	}
+
+	public void guardarCuento(Boton boton) {
+		if (app.mouseX >= boton.posX && app.mouseX <= boton.posX + boton.ancho && app.mouseY >= boton.posY
+				&& app.mouseY <= boton.posY + boton.alto) {
+			app.saveStrings("cuento.txt", cuentoData);
+		}
+	}
+
+	public void reiniciarCuento(Boton boton) {
+		if (app.mouseX >= boton.posX && app.mouseX <= boton.posX + boton.ancho && app.mouseY >= boton.posY
+				&& app.mouseY <= boton.posY + boton.alto) {
+			numeroPagina = 0;
 		}
 	}
 
