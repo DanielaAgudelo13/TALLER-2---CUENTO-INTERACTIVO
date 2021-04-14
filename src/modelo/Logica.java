@@ -33,7 +33,7 @@ public class Logica {
 	public Logica(PApplet app) {
 		this.app = app;
 		this.mangostana = app.createFont("../fonts/Mangostana.otf", 36);
-		this.numeroPagina = 5;
+		this.numeroPagina = 0;
 		this.paginas = new PImage[7];
 		this.botones = new PImage[4];
 		this.imagenEscenografia = new PImage[3];
@@ -118,6 +118,10 @@ public class Logica {
 			jovenInteractivo.pintar();
 			piedraInteractivo.pintar();
 			
+			if (princesaInteractivo.isActivado() && jovenInteractivo.isActivado() && piedraInteractivo.isActivado()) {
+				numeroPagina ++;
+			}
+			
 			// objInteractivo1.pintar();
 			break;
 
@@ -129,6 +133,10 @@ public class Logica {
 			princesaInteractivo.setPosX(636);
 			princesaInteractivo.setPosY(235);
 			collarInteractivo.pintar();
+			
+			if (collarInteractivo.isActivado()) {
+				numeroPagina ++;
+			}
 			
 			break;
 
@@ -143,6 +151,10 @@ public class Logica {
 			princesaInteractivo.setPosX(382);
 			princesaInteractivo.setPosY(235);
 			
+			if (fuegoInteractivo.isActivado() && oroInteractivo.isActivado()) {
+				numeroPagina ++;
+			}
+			
 			break;
 
 		case 5:
@@ -155,6 +167,10 @@ public class Logica {
 			princesaInteractivo.pintar();
 			princesaInteractivo.setPosX(247);
 			princesaInteractivo.setPosY(201);
+			
+			if (campesinaInteractivo.isActivado()) {
+				numeroPagina ++;
+			}
 			
 			break;
 
@@ -185,7 +201,26 @@ public class Logica {
 			break;
 
 		case 2:
+			princesaInteractivo.revelar();
+			jovenInteractivo.revelar();
+			piedraInteractivo.revelar();
 	
+			break;
+			
+		case 3: 
+			collarInteractivo.revelar();
+			
+			break;
+		
+		case 4:
+			fuegoInteractivo.revelar();
+			oroInteractivo.revelar();
+			
+			break;
+			
+		case 5:
+			campesinaInteractivo.revelar();
+			
 			break;
 
 		case 6:
@@ -222,6 +257,14 @@ public class Logica {
 		if (app.mouseX >= boton.posX && app.mouseX <= boton.posX + boton.ancho && app.mouseY >= boton.posY
 				&& app.mouseY <= boton.posY + boton.alto) {
 			numeroPagina = 0;
+			princesaInteractivo.setActivado(false);
+			jovenInteractivo.setActivado(false);
+			campesinaInteractivo.setActivado(false);
+			piedraInteractivo.setActivado(false);
+			collarInteractivo.setActivado(false);
+			oroInteractivo.setActivado(false);
+			fuegoInteractivo.setActivado(false);
+			
 		}
 	}
 

@@ -36,6 +36,14 @@ public class ObjetoInteractivo {
 			app.image(imagenOscura, posX, posY, ancho, alto);
 		}
 	}
+	
+	public void revelar () {
+		
+		if (app.mouseX >= posX && app.mouseX <= posX + ancho && app.mouseY >= posY
+				&& app.mouseY <= posY + alto) {
+			activado = true;
+		}
+	}
 
 	public int getPosX() {
 		return posX;
