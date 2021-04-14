@@ -47,7 +47,6 @@ public class Logica {
 		
 		// Texto
 		this.cuentoData = app.loadStrings("../data/Cuentoprincesa.txt");
-		this.parrafo2 = cuentoData[1].split(" ");
 		
 		// Escenografia
 		this.textoInteractivo1 = parrafo2[8].substring(0, parrafo2[8].length() - 1);
@@ -204,7 +203,7 @@ public class Logica {
 			princesaInteractivo.revelar();
 			jovenInteractivo.revelar();
 			piedraInteractivo.revelar();
-	
+			
 			break;
 			
 		case 3: 
