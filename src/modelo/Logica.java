@@ -49,7 +49,7 @@ public class Logica {
 		this.cuentoData = app.loadStrings("../data/Cuentoprincesa.txt");
 		
 		// Escenografia
-		this.textoInteractivo1 = parrafo2[8].substring(0, parrafo2[8].length() - 1);
+		//this.textoInteractivo1 = parrafo2[8].substring(0, parrafo2[8].length() - 1);
 		this.rey = new Humano (404, 204, 120, 231, app, imagenEscenografia[2]);
 		this.campesino = new Humano (908, 212, 159, 234, app, imagenEscenografia[1]);
 		this.fuego = new Objeto (613, 318, 28, 129, app, imagenEscenografia[0]);
