@@ -22,25 +22,47 @@ public class Logica {
 	Humano rey;
 	Humano campesino;
 	Objeto fuego;
+	ObjetoInteractivo princesaInteractivo;
+	ObjetoInteractivo piedraInteractivo;
+	ObjetoInteractivo jovenInteractivo;
+	ObjetoInteractivo oroInteractivo;
+	ObjetoInteractivo collarInteractivo;
+	ObjetoInteractivo fuegoInteractivo;
+	ObjetoInteractivo campesinaInteractivo;
 
 	public Logica(PApplet app) {
 		this.app = app;
 		this.mangostana = app.createFont("../fonts/Mangostana.otf", 36);
-		this.numeroPagina = 4;
+		this.numeroPagina = 5;
 		this.paginas = new PImage[7];
 		this.botones = new PImage[4];
 		this.imagenEscenografia = new PImage[3];
 		cargarImagenes();
+		
+		// Botones
 		this.inicioBtn = new Boton(960, 551, 148, 60, botones[0], app);
 		this.boton2 = new Boton(960, 551, 148, 60, botones[1], app);
 		this.boton3 = new Boton(897, 486, 206, 60, botones[2], app);
 		this.boton4ultimo = new Boton(950, 572, 158, 60, botones[3], app);
+		
+		// Texto
 		this.cuentoData = app.loadStrings("../data/Cuentoprincesa.txt");
 		this.parrafo2 = cuentoData[1].split(" ");
+		
+		// Escenografia
 		this.textoInteractivo1 = parrafo2[8].substring(0, parrafo2[8].length() - 1);
 		this.rey = new Humano (404, 204, 120, 231, app, imagenEscenografia[2]);
 		this.campesino = new Humano (908, 212, 159, 234, app, imagenEscenografia[1]);
 		this.fuego = new Objeto (613, 318, 28, 129, app, imagenEscenografia[0]);
+		
+		// Objetos interactivos
+		this.princesaInteractivo = new ObjetoInteractivo(376, 215, 125, 225, false, "princesa", "princesanegro", app);
+		this.campesinaInteractivo = new ObjetoInteractivo(646, 193, 100, 238, false, "campesina", "campesinanegro", app);
+		this.jovenInteractivo = new ObjetoInteractivo(705, 214, 138, 227, false, "joven", "jovennegro", app);
+		this.oroInteractivo = new ObjetoInteractivo(669, 373, 79, 79, false, "oro", "oronegro", app);
+		this.piedraInteractivo = new ObjetoInteractivo(578, 370, 79, 79, false, "piedra", "piedranegro", app);
+		this.collarInteractivo = new ObjetoInteractivo(686, 278, 22, 19, false, "collar", "collarnegro", app);
+		this.fuegoInteractivo = new ObjetoInteractivo(540, 293, 37, 155, false, "fuego1", "fuegonegro", app);
 	}
 
 	public void cargarImagenes() {
@@ -90,6 +112,12 @@ public class Logica {
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[1], 28, 503, 1150, 160);
 			app.text(cuentoData[2], 28, 580, 1150, 160);
+			princesaInteractivo.pintar();
+			princesaInteractivo.setPosX(376);
+			princesaInteractivo.setPosY(215);
+			jovenInteractivo.pintar();
+			piedraInteractivo.pintar();
+			
 			// objInteractivo1.pintar();
 			break;
 
@@ -97,6 +125,11 @@ public class Logica {
 
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[3], 28, 503, 1150, 160);
+			princesaInteractivo.pintar();
+			princesaInteractivo.setPosX(636);
+			princesaInteractivo.setPosY(235);
+			collarInteractivo.pintar();
+			
 			break;
 
 		case 4:
@@ -104,6 +137,12 @@ public class Logica {
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[4], 28, 503, 1150, 160);
 			fuego.pintar();
+			fuegoInteractivo.pintar();
+			oroInteractivo.pintar();
+			princesaInteractivo.pintar();
+			princesaInteractivo.setPosX(382);
+			princesaInteractivo.setPosY(235);
+			
 			break;
 
 		case 5:
@@ -112,6 +151,10 @@ public class Logica {
 			app.text(cuentoData[5], 28, 503, 1150, 160);
 			rey.pintar();
 			campesino.pintar();
+			campesinaInteractivo.pintar();
+			princesaInteractivo.pintar();
+			princesaInteractivo.setPosX(247);
+			princesaInteractivo.setPosY(201);
 			
 			break;
 
@@ -122,6 +165,7 @@ public class Logica {
 			app.text(cuentoData[7], 576, 420, 518, 158);
 			boton3.pintar();
 			boton4ultimo.pintar();
+			
 
 			break;
 
