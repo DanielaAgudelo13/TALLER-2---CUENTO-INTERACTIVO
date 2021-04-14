@@ -18,26 +18,19 @@ public class Logica {
 	String[] cuentoData;
 	String[] parrafo2;
 	String textoInteractivo1;
-	ObjetoInteractivo objInteractivo1;
+	PImage[] imagenEscenografia;
+	Humano rey;
+	Humano campesino;
+	Objeto fuego;
 
 	public Logica(PApplet app) {
-
 		this.app = app;
 		this.mangostana = app.createFont("../fonts/Mangostana.otf", 36);
+		this.numeroPagina = 4;
 		this.paginas = new PImage[7];
-		this.paginas[0] = app.loadImage("../img/inicio.jpg");
-		this.paginas[1] = app.loadImage("../img/habiaunavez.jpg");
-		this.paginas[2] = app.loadImage("../img/relato1.jpg");
-		this.paginas[3] = app.loadImage("../img/relato2.jpg");
-		this.paginas[4] = app.loadImage("../img/relato3.jpg");
-		this.paginas[5] = app.loadImage("../img/relato4.jpg");
-		this.paginas[6] = app.loadImage("../img/fin.jpg");
-		this.numeroPagina = 6;
 		this.botones = new PImage[4];
-		this.botones[0] = app.loadImage("../img/boton1.png");
-		this.botones[1] = app.loadImage("../img/boton2.png");
-		this.botones[2] = app.loadImage("../img/boton3.png");
-		this.botones[3] = app.loadImage("../img/boton4ultimo.png");
+		this.imagenEscenografia = new PImage[3];
+		cargarImagenes();
 		this.inicioBtn = new Boton(960, 551, 148, 60, botones[0], app);
 		this.boton2 = new Boton(960, 551, 148, 60, botones[1], app);
 		this.boton3 = new Boton(897, 486, 206, 60, botones[2], app);
@@ -45,8 +38,26 @@ public class Logica {
 		this.cuentoData = app.loadStrings("../data/Cuentoprincesa.txt");
 		this.parrafo2 = cuentoData[1].split(" ");
 		this.textoInteractivo1 = parrafo2[8].substring(0, parrafo2[8].length() - 1);
-		this.objInteractivo1 = new ObjetoInteractivo(546, 515, 56, 31, app);
-		// System.out.println(textoInteractivo1);
+		this.rey = new Humano (404, 204, 120, 231, app, imagenEscenografia[2]);
+		this.campesino = new Humano (908, 212, 159, 234, app, imagenEscenografia[1]);
+		this.fuego = new Objeto (613, 318, 28, 129, app, imagenEscenografia[0]);
+	}
+
+	public void cargarImagenes() {
+		this.paginas[0] = app.loadImage("../img/inicio.jpg");
+		this.paginas[1] = app.loadImage("../img/habiaunavez.jpg");
+		this.paginas[2] = app.loadImage("../img/relato1.jpg");
+		this.paginas[3] = app.loadImage("../img/relato2.jpg");
+		this.paginas[4] = app.loadImage("../img/relato3.jpg");
+		this.paginas[5] = app.loadImage("../img/relato4.jpg");
+		this.paginas[6] = app.loadImage("../img/fin.jpg");
+		this.botones[0] = app.loadImage("../img/boton1.png");
+		this.botones[1] = app.loadImage("../img/boton2.png");
+		this.botones[2] = app.loadImage("../img/boton3.png");
+		this.botones[3] = app.loadImage("../img/boton4ultimo.png");
+		this.imagenEscenografia[0] = app.loadImage("../img/fuego2.png");
+		this.imagenEscenografia[1] = app.loadImage("../img/campesino.png");
+		this.imagenEscenografia[2] = app.loadImage("../img/rey.png");
 	}
 
 	public void pintar() {
@@ -92,12 +103,16 @@ public class Logica {
 
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[4], 28, 503, 1150, 160);
+			fuego.pintar();
 			break;
 
 		case 5:
 
 			app.textAlign(app.CENTER);
 			app.text(cuentoData[5], 28, 503, 1150, 160);
+			rey.pintar();
+			campesino.pintar();
+			
 			break;
 
 		case 6:
@@ -126,7 +141,7 @@ public class Logica {
 			break;
 
 		case 2:
-			interactuarObjeto(objInteractivo1);
+	
 			break;
 
 		case 6:
